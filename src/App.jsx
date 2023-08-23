@@ -26,20 +26,20 @@ function App() {
     setIsShowModal(true);
   };
 
-      //función para colocar mi imagen
-      const [imageBase64, setImageBase64] = useState('');
+  //estado para trabajar mi imagen
+  const [imageBase64, setImageBase64] = useState('');
 
-      //funcion para manejar mi imagen
-      const handleImageChange = async (e) => {
-          const file = e.target.files[0];
-          if (file) {
-              const reader = new FileReader();
-              reader.onload = (event) => {
-                  setImageBase64(event.target.result);
-              };
-              reader.readAsDataURL(file);
-          }
+  //funcion para manejar mi imagen
+  const handleImageChange = async (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        setImageBase64(event.target.result);
       };
+      reader.readAsDataURL(file);
+    }
+  };
 
 
 
@@ -110,27 +110,28 @@ function App() {
 
   //hook para renderizar la primera vez que se carga la pag.
   useEffect(() => {
-    getAllUsers();    
+    getAllUsers();
     isdarkmode
       ? (document.documentElement.classList.add('dark'), localStorage.setItem('theme', 'dark'))
       : (document.documentElement.classList.remove('dark'), localStorage.setItem('theme', 'light'))
   }, [isdarkmode])
 
   return (
-    <main className='bg-purple-200 min-h-screen dark:bg-blue-950 dark:transition-colors duration-1000 dark:duration-1000'>
-      <div className='flex justify-between items-center px-5 bg-purple-500 dark:bg-black dark:text-white dark:transition-colors duration-1000 dark:duration-1000'>
-        <h1 className="text-3xl font-bold text-center m-3">Usuarios</h1>
-        {
-          isdarkmode? 
-          <i onClick={handleChangeMode} className='bx bxs-moon text-white bg-black rounded-full p-1 cursor-pointer dark:transition-colors duration-1000 dark:duration-1000'></i>  
-          : <i onClick={handleChangeMode} className='bx bxs-sun text-white bg-black rounded-full p-1 cursor-pointer dark:transition-colors duration-1000 dark:duration-1000'></i>
-        }
-      </div>
+    <main className='bg-purple-200 min-h-screen dark:bg-blue-950 dark:transition-colors duration-1000 dark:duration-1000'>      
+      <div className='flex items-center justify-around bg-purple-500 dark:bg-black dark:text-white dark:transition-colors duration-1000 dark:duration-1000'>
+        <h1 className="text-3xl font-bold text-center m-3 max-w-5xl">Usuarios</h1>        
+          {
+            isdarkmode ?
+              <i onClick={handleChangeMode} className='bx bxs-sun text-yellow-400 bg-black border-[1px] rounded-full p-1 cursor-pointer dark:transition-colors duration-1000 dark:duration-1000'></i>
+              : <i onClick={handleChangeMode} className='bx bxs-moon text-white bg-black rounded-full p-1 cursor-pointer dark:transition-colors duration-1000 dark:duration-1000'></i>
+          }
+        </div>      
+      
       <div className=' flex m-auto justify-center sm:flex sm:justify-end sm:pr-9 sm:max-w-full'>
         <button onClick={handleClickOpenModal} className='bg-purple-700 shadow-lg shadow-indigo-500/100 dark:shadow-black/80  mt-5 dark:bg-black text-white p-2 rounded-md cursor-pointer dark:transition-colors duration-1000 dark:duration-1000'> <i className='bx bx-plus bx-spin-hover' ></i> Crear Nuevo Usuario </button>
       </div>
 
-      <ModalForm        
+      <ModalForm
         isShowModal={isShowModal}
         handleClickOpenModal={handleClickOpenModal}
         createUser={createUser}
