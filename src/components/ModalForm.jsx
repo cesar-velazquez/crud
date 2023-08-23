@@ -1,25 +1,45 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form'
 import { EMPTY_FORM_VALUES } from '../shared/constants';
 
-const ModalForm = ({    
+const ModalForm = ({
     isShowModal,
+    imageBase64,
     createUser,
     isUserUpdate,
     UpdateUser,
     setIsShowModal,
-    setIsUserUpdate }) => {
+    setIsUserUpdate,
+    handleImageChange
+}) => {
 
     const {
+        // handleImageChange,
         handleSubmit,
         register,
         reset,
         formState: { errors },
     } = useForm();
 
+    // //función para colocar mi imagen
+    // const [imageBase64, setImageBase64] = useState('');
+
+    // //funcion para manejar mi imagen
+    // const handleImageChange = async (e) => {
+    //     const file = e.target.files[0];
+    //     if (file) {
+    //         const reader = new FileReader();
+    //         reader.onload = (event) => {
+    //             setImageBase64(event.target.result);
+    //         };
+    //         reader.readAsDataURL(file);
+    //     }
+    // };
 
 
     const submit = (data) => {
+        data.image_url = imageBase64;
+
         if (isUserUpdate) {
             UpdateUser(data, reset)
         } else {
@@ -47,7 +67,7 @@ const ModalForm = ({
                 <button onClick={handleClickCloseModal} type="button" className='text-black font-extrabold bg-white absolute right-3 top-2 p-1  flex justify-center rounded-full'>X</button>
                 <h2 className='text-black dark:text-white font-bold text-center'>{isUserUpdate ? "Editar Usuario" : "Nuevo Usuario"}</h2>
                 <div className='grid' >
-                    <label className='py-1' htmlFor="first_name">Nombre</label>                    
+                    <label className='py-1' htmlFor="first_name">Nombre</label>
                     <input className='text-center outline-none border-2 border-slate-400/20 dark:bg-[#222838]' id='first_name' type="text" placeholder='Escribe tu nombre...'
                         {...register("first_name", {
                             required: {
@@ -148,11 +168,29 @@ const ModalForm = ({
                         })} />
                     {errors.birthday && <p className='text-red-500'>{errors.birthday.message}</p>}
                 </div>
+                {/* inicio foto */}
+
                 {/* <div className='grid'>
                     <label htmlFor="image_url">Foto</label>
-                    <input className='bg-black text-white' id='image_url' type="file"
+                    <input
+                        className='bg-black text-white' id='image_url' type="file"
                         {...register("image_url")} />
                 </div> */}
+                <div className='grid'>
+                    <label className='py-1' htmlFor="image_url">Foto</label>
+                    <input
+                        className='text-center outline-none border-2 border-slate-400/20 bg-[#e7e9ee] dark:bg-[#222838]'
+                        id='image_url'
+                        type="file"
+                        required
+                        onChange={handleImageChange}
+                    />
+                    {imageBase64 && (
+                        <img src={imageBase64} alt="Preview" className="flex m-auto mt-2 w-[150px] max-h-40" />
+                    )}
+                </div>
+
+                {/* fin foto */}
                 <button className='dark:transition-colors duration-1000 dark:duration-1000 font-bold bg-black text-white p-2 hover:bg-white hover:text-black'>{isUserUpdate ? "Guardar Cambios" : "Agregar nuevo usuario"}</button>
             </form>
         </section>

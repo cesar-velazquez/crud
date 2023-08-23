@@ -6,7 +6,8 @@ const UserList = ({ users,
   handleUpdateUsers,
   handleNotification,
   isShowNotification,
-  setisShowNotification
+  setisShowNotification,
+  imageBase64
 }) => {
 
   return (
@@ -20,6 +21,7 @@ const UserList = ({ users,
           handleNotification={handleNotification}
           isShowNotification={isShowNotification}
           setisShowNotification={setisShowNotification}
+          imageBase64={imageBase64}
         />)
       }
     </section>

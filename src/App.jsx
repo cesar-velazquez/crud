@@ -26,6 +26,23 @@ function App() {
     setIsShowModal(true);
   };
 
+      //función para colocar mi imagen
+      const [imageBase64, setImageBase64] = useState('');
+
+      //funcion para manejar mi imagen
+      const handleImageChange = async (e) => {
+          const file = e.target.files[0];
+          if (file) {
+              const reader = new FileReader();
+              reader.onload = (event) => {
+                  setImageBase64(event.target.result);
+              };
+              reader.readAsDataURL(file);
+          }
+      };
+
+
+
 
 
   //función para cambiar a darkmode
@@ -93,7 +110,7 @@ function App() {
 
   //hook para renderizar la primera vez que se carga la pag.
   useEffect(() => {
-    getAllUsers();
+    getAllUsers();    
     isdarkmode
       ? (document.documentElement.classList.add('dark'), localStorage.setItem('theme', 'dark'))
       : (document.documentElement.classList.remove('dark'), localStorage.setItem('theme', 'light'))
@@ -121,6 +138,8 @@ function App() {
         UpdateUser={UpdateUser}
         setIsShowModal={setIsShowModal}
         setIsUserUpdate={setIsUserUpdate}
+        imageBase64={imageBase64}
+        handleImageChange={handleImageChange}
       />
 
       <UserList
@@ -130,6 +149,7 @@ function App() {
         isShowNotification={isShowNotification}
         setIsShowNotification={setIsShowNotification}
         handleNotification={handleNotification}
+        imageBase64={imageBase64}
       />
     </main>
   )
