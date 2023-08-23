@@ -100,16 +100,20 @@ function App() {
   }, [isdarkmode])
 
   return (
-    <>
-      <div className='flex justify-between items-center px-5 dark:bg-black dark:text-white dark:transition-colors duration-1000 dark:duration-1000'>
+    <main className='bg-purple-200 min-h-screen dark:bg-blue-950 dark:transition-colors duration-1000 dark:duration-1000'>
+      <div className='flex justify-between items-center px-5 bg-purple-500 dark:bg-black dark:text-white dark:transition-colors duration-1000 dark:duration-1000'>
         <h1 className="text-3xl font-bold text-center m-3">Usuarios</h1>
-        <i onClick={handleChangeMode} className='bx bxs-moon text-white bg-black rounded-full p-1'></i>
+        {
+          isdarkmode? 
+          <i onClick={handleChangeMode} className='bx bxs-moon text-white bg-black rounded-full p-1 cursor-pointer dark:transition-colors duration-1000 dark:duration-1000'></i>  
+          : <i onClick={handleChangeMode} className='bx bxs-sun text-white bg-black rounded-full p-1 cursor-pointer dark:transition-colors duration-1000 dark:duration-1000'></i>
+        }
       </div>
-      <div className='flex m-auto justify-center sm:flex sm:justify-end sm:pr-9 sm:max-w-full'>
-        <button onClick={handleClickOpenModal} className='mt-5 bg-black/60 text-white p-2 rounded-md cursor-pointer'> <i className='bx bx-plus bx-spin-hover' ></i> Crear Nuevo Usuario </button>
+      <div className=' flex m-auto justify-center sm:flex sm:justify-end sm:pr-9 sm:max-w-full'>
+        <button onClick={handleClickOpenModal} className='bg-purple-700 shadow-lg shadow-indigo-500/100 dark:shadow-black/80  mt-5 dark:bg-black text-white p-2 rounded-md cursor-pointer dark:transition-colors duration-1000 dark:duration-1000'> <i className='bx bx-plus bx-spin-hover' ></i> Crear Nuevo Usuario </button>
       </div>
 
-      <ModalForm
+      <ModalForm        
         isShowModal={isShowModal}
         handleClickOpenModal={handleClickOpenModal}
         createUser={createUser}
@@ -127,7 +131,7 @@ function App() {
         setIsShowNotification={setIsShowNotification}
         handleNotification={handleNotification}
       />
-    </>
+    </main>
   )
 }
 

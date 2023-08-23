@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useForm } from 'react-hook-form'
 import { EMPTY_FORM_VALUES } from '../shared/constants';
 
-const ModalForm = ({
+const ModalForm = ({    
     isShowModal,
     createUser,
     isUserUpdate,
@@ -41,14 +41,14 @@ const ModalForm = ({
     }, [isUserUpdate])
 
     return (
-        <section className={`fixed bg-black/60 left-0 right-0 top-0 bottom-0 flex justify-center items-center transition-[opacity_transform] duration-500 ${isShowModal ? "visible opacity-100 scale-100" : "invisible opacity-0 scale-0"} `}>
+        <section className={`fixed bg-purple-400/60 dark:bg-black/60 left-0 right-0 top-0 bottom-0 flex justify-center items-center transition-[opacity_transform] duration-500 ${isShowModal ? "visible opacity-100 scale-100" : "invisible opacity-0 scale-0"} `}>
             <form onSubmit={handleSubmit(submit)}
-                className='bg-[#FFFFFF] grid gap-2 p-4 relative m-3 sm:w-[350px]'>
+                className='bg-purple-400 grid gap-2 p-4 relative m-3 sm:w-[350px] dark:bg-black dark:text-white dark:transition-colors duration-1000 dark:duration-1000 border-[1px] '>
                 <button onClick={handleClickCloseModal} type="button" className='text-black font-extrabold bg-white absolute right-3 top-2 p-1  flex justify-center rounded-full'>X</button>
-                <h2 className='text-black font-bold text-center'>{isUserUpdate ? "Editar Usuario" : "Nuevo Usuario"}</h2>
+                <h2 className='text-black dark:text-white font-bold text-center'>{isUserUpdate ? "Editar Usuario" : "Nuevo Usuario"}</h2>
                 <div className='grid' >
-                    <label className='py-1' htmlFor="first_name">Nombre</label>
-                    <input className='text-center outline-none border-2 border-slate-400/20 bg-[#e7e9ee]' id='first_name' type="text" placeholder='Escribe tu nombre...'
+                    <label className='py-1' htmlFor="first_name">Nombre</label>                    
+                    <input className='text-center outline-none border-2 border-slate-400/20 dark:bg-[#222838]' id='first_name' type="text" placeholder='Escribe tu nombre...'
                         {...register("first_name", {
                             required: {
                                 value: true,
@@ -69,7 +69,7 @@ const ModalForm = ({
                 <div className='grid'>
                     <label className='py-1' htmlFor="last_name">Apellidos</label>
                     <input
-                        className='text-center outline-none border-2 border-slate-400/20 bg-[#e7e9ee]'
+                        className='text-center outline-none border-2 border-slate-400/20 bg-[#e7e9ee] dark:bg-[#222838]'
                         placeholder='Escribe tu apellido...'
                         id='last_name'
                         type="text"
@@ -98,7 +98,7 @@ const ModalForm = ({
                         className='py-1'
                         htmlFor="email">Correo</label>
                     <input
-                        className='text-center outline-none border-2 border-slate-400/20 bg-[#e7e9ee]'
+                        className='text-center outline-none border-2 border-slate-400/20 bg-[#e7e9ee] dark:bg-[#222838]'
                         placeholder='Escribe tu correo...'
                         id='email' type="email"
                         {...register("email", {
@@ -118,7 +118,7 @@ const ModalForm = ({
                         className='py-1'
                         htmlFor="password">Contraseña</label>
                     <input
-                        className='text-center outline-none border-2 border-slate-400/20 bg-[#e7e9ee]'
+                        className='text-center outline-none border-2 border-slate-400/20 bg-[#e7e9ee] dark:bg-[#222838]'
                         placeholder='Escribe tu contraseña...'
                         id='password' type="password"
                         {...register("password", {
@@ -138,7 +138,7 @@ const ModalForm = ({
                         className='py-1'
                         htmlFor="birthday">Cumpleaños</label>
                     <input
-                        className='text-center outline-none border-2 border-slate-400/20 bg-[#e7e9ee]'
+                        className='text-center outline-none border-2 border-slate-400/20 bg-[#e7e9ee] dark:bg-[#222838]'
                         id='birthday' type="date"
                         {...register("birthday", {
                             required: {
@@ -153,7 +153,7 @@ const ModalForm = ({
                     <input className='bg-black text-white' id='image_url' type="file"
                         {...register("image_url")} />
                 </div> */}
-                <button className='font-bold bg-black text-white p-2 hover:bg-white hover:text-black'>{isUserUpdate ? "Guardar Cambios" : "Agregar nuevo usuario"}</button>
+                <button className='dark:transition-colors duration-1000 dark:duration-1000 font-bold bg-black text-white p-2 hover:bg-white hover:text-black'>{isUserUpdate ? "Guardar Cambios" : "Agregar nuevo usuario"}</button>
             </form>
         </section>
     )

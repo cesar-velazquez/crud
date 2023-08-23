@@ -4,12 +4,12 @@ const UserCard = ({ user, deleteUsers, handleUpdateUsers, handleNotification}) =
         
 
   return (
-    <section className='bg-[#FFF] text-center border-2 border-[#E5E5E5]  my-4 p-4 sm:my-1'>
-      <ul className='text-center'>
-        <li className="text-black font-bold text-xl font-sans">{user.first_name} {user.last_name}</li>        
-        <li className="text-[#302F2F] font-serif font-medium"><span className="text-[#D3D3D3] text-left">Email:</span> <br /> <i className='bx bx-envelope align-middle ' ></i> {user.email}</li>
+    <section className='bg-purple-500 text-center shadow-lg shadow-indigo-500 dark:bg-black dark:shadow-lg dark:shadow-black     my-4 p-4 sm:my-1'>
+      <ul className='text-center '>
+        <li className="dark:text-white text-black font-bold text-xl font-sans">{user.first_name} {user.last_name}</li>        
+        <li className="dark:text-white text-black font-serif font-semibold"><span className="text-[#D3D3D3] text-left">Email:</span> <br /> <i className='bx bx-envelope align-middle ' ></i> {user.email}</li>
         {/* <li  >Contraseña: {user.password}</li> */}
-        <li className="text-[#302F2F] font-serif font-medium" ><span className="text-[#D3D3D3] text-left">Cumpleaños:</span> <br /> <i className='bx bx-gift align-middle' ></i> {user.birthday}</li>
+        <li className="dark:text-white text-black font-serif font-semibold" ><span className="text-[#D3D3D3] text-left">Cumpleaños:</span> <br /> <i className='bx bx-gift align-middle' ></i> {user.birthday}</li>
         {/* <li>Foto: {user.image_url}</li> */}
       </ul>
       <div>

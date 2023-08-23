@@ -10,7 +10,7 @@ const UserList = ({ users,
 }) => {
 
   return (
-    <section className='grid m-auto  my-4 bg-[#FFF] text-white p-4 gap-4 sm:grid sm:grid-cols-2 lg:grid-cols-3 max-w-7xl '>
+    <section className='grid m-auto  my-4 bg-transparent text-white p-4 gap-4 sm:grid sm:grid-cols-2 lg:grid-cols-3 max-w-7xl '>
       {
         users.map((user) => <UserCard
           key={user.id}
