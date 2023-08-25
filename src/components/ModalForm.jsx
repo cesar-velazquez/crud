@@ -10,38 +10,23 @@ const ModalForm = ({
     UpdateUser,
     setIsShowModal,
     setIsUserUpdate,
-    handleImageChange
+    handleImageChange,
+    
 }) => {
 
-    const {
-        // handleImageChange,
+    const {        
         handleSubmit,
         register,
         reset,
         formState: { errors },
     } = useForm();
 
-    // //función para colocar mi imagen
-    // const [imageBase64, setImageBase64] = useState('');
-
-    // //funcion para manejar mi imagen
-    // const handleImageChange = async (e) => {
-    //     const file = e.target.files[0];
-    //     if (file) {
-    //         const reader = new FileReader();
-    //         reader.onload = (event) => {
-    //             setImageBase64(event.target.result);
-    //         };
-    //         reader.readAsDataURL(file);
-    //     }
-    // };
-
 
     const submit = (data) => {
         data.image_url = imageBase64;
 
         if (isUserUpdate) {
-            UpdateUser(data, reset)
+            UpdateUser(data, reset)            
         } else {
             createUser(data, reset)
         }
@@ -49,10 +34,13 @@ const ModalForm = ({
 
     //función para que cierre el modal 
     const handleClickCloseModal = () => {
-        setIsShowModal(false)
-        reset(EMPTY_FORM_VALUES)
-        setIsUserUpdate(null)
-    }
+        setIsShowModal(false);
+        reset(EMPTY_FORM_VALUES);
+        setIsUserUpdate(null);
+      
+        // Eliminar la imagen de localStorage
+        localStorage.removeItem('image_url');
+      };
 
     useEffect(() => {
         if (isUserUpdate) {
@@ -168,21 +156,14 @@ const ModalForm = ({
                         })} />
                     {errors.birthday && <p className='text-red-500'>{errors.birthday.message}</p>}
                 </div>
-                {/* inicio foto */}
 
-                {/* <div className='grid'>
-                    <label htmlFor="image_url">Foto</label>
-                    <input
-                        className='bg-black text-white' id='image_url' type="file"
-                        {...register("image_url")} />
-                </div> */}
+                {/* inicio foto */}
                 <div className='grid'>
                     <label className='py-1' htmlFor="image_url">Foto</label>
                     <input
                         className='text-center outline-none border-2 border-slate-400/20 bg-[#e7e9ee] dark:bg-[#222838]'
                         id='image_url'
-                        type="file"
-                        required
+                        type="file"                        
                         onChange={handleImageChange}
                     />
                     {imageBase64 && (

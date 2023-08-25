@@ -4,5 +4,5 @@ export const EMPTY_FORM_VALUES = {
     email: "",
     password: "",
     birthday: "",
-    // image_url: ""
+    image_url: ""
 }
