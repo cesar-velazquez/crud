@@ -42,7 +42,7 @@ function App() {
         setImageBase64(imageData);
         localStorage.setItem('imageData', imageData);
       };
-      reader.readAsDataURL(file);      
+      reader.readAsDataURL(file);
     }
   };
 
@@ -84,9 +84,9 @@ function App() {
   //función para actualizar
   const handleUpdateUsers = (user) => {
     setIsShowModal(true)
-    setIsUserUpdate(user)  
-  const imageBase64 = user.image_url || '';
-  setImageBase64(imageBase64);  
+    setIsUserUpdate(user)
+    const imageBase64 = user.image_url || '';
+    setImageBase64(imageBase64);
   }
 
 
@@ -137,7 +137,7 @@ function App() {
         <button onClick={handleClickOpenModal} className='bg-purple-700 shadow-lg shadow-indigo-500/100 dark:shadow-black/80  mt-5 dark:bg-black text-white p-2 rounded-md cursor-pointer dark:transition-colors duration-1000 dark:duration-1000'> <i className='bx bx-plus bx-spin-hover' ></i> Crear Nuevo Usuario </button>
       </div>
 
-      <ModalForm      
+      <ModalForm
         isShowModal={isShowModal}
         handleClickOpenModal={handleClickOpenModal}
         createUser={createUser}

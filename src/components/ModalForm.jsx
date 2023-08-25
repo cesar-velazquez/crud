@@ -11,10 +11,10 @@ const ModalForm = ({
     setIsShowModal,
     setIsUserUpdate,
     handleImageChange,
-    
+
 }) => {
 
-    const {        
+    const {
         handleSubmit,
         register,
         reset,
@@ -26,7 +26,7 @@ const ModalForm = ({
         data.image_url = imageBase64;
 
         if (isUserUpdate) {
-            UpdateUser(data, reset)            
+            UpdateUser(data, reset)
         } else {
             createUser(data, reset)
         }
@@ -37,10 +37,10 @@ const ModalForm = ({
         setIsShowModal(false);
         reset(EMPTY_FORM_VALUES);
         setIsUserUpdate(null);
-      
+
         // Eliminar la imagen de localStorage
         localStorage.removeItem('image_url');
-      };
+    };
 
     useEffect(() => {
         if (isUserUpdate) {
@@ -163,7 +163,7 @@ const ModalForm = ({
                     <input
                         className='text-center outline-none border-2 border-slate-400/20 bg-[#e7e9ee] dark:bg-[#222838]'
                         id='image_url'
-                        type="file"                        
+                        type="file"
                         onChange={handleImageChange}
                     />
                     {imageBase64 && (
