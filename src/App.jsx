@@ -29,7 +29,7 @@ function App() {
   };
 
   //estado para trabajar mi imagen
-  const [imageBase64, setImageBase64] = useState('');
+  const [imageBase64, setImageBase64] = useState([]);
 
 
   //funcion para manejar mi imagen
